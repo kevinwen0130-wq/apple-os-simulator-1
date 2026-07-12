@@ -52,8 +52,11 @@ h1{margin:0;font-size:clamp(24px,3vw,38px);letter-spacing:-.045em}.sub{color:var
 .note{margin-top:20px;color:var(--muted);text-align:center;max-width:360px;line-height:1.55}
 @media(max-width:920px){.stage{grid-template-columns:1fr}.phonePanel{justify-content:flex-start;padding-left:18px}.phoneWrap{transform:none}}
 </style>
+<link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+  
+  <body>
+
 <div class="topbar">
   <div><h1>Apple OS Simulator V3</h1><div class="sub">更完整的 iPhone 與 Apple Watch 互動版</div></div>
   <div class="actions"><button class="pill" id="syncBtn">同步通知</button><button class="pill" id="resetBtn">重置</button></div>
@@ -191,6 +194,6 @@ document.querySelectorAll('[data-w]').forEach(x=>bind(x,()=>{
   },20)
 }));
 bind($('wback'),()=>{watchInApp=false;$('wdetail').classList.remove('open');showWatchApps()});
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
