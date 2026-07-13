@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Apple OS Simulator V3</title>
+<title>Apple OS Simulator V4</title>
 <style>
 :root{
   --bg:#e9eef6;--panel:rgba(255,255,255,.74);--text:#17181c;--muted:#6e7480;
@@ -58,7 +58,8 @@ h1{margin:0;font-size:clamp(24px,3vw,38px);letter-spacing:-.045em}.sub{color:var
   <body>
 
 <div class="topbar">
-  <div><h1>Apple OS Simulator V3</h1><div class="sub">更完整的 iPhone 與 Apple Watch 互動版</div></div>
+  <div><h1>Apple OS Simulator V4
+  </h1><div class="sub">更完整的 iPhone 與 Apple Watch 互動版</div></div>
   <div class="actions"><button class="pill" id="syncBtn">同步通知</button><button class="pill" id="resetBtn">重置</button></div>
 </div>
 <main class="stage">
@@ -196,5 +197,10 @@ document.querySelectorAll('[data-w]').forEach(x=>bind(x,()=>{
 bind($('wback'),()=>{watchInApp=false;$('wdetail').classList.remove('open');showWatchApps()});
 </script>
 <script src="js/main.js"></script>
+<script src="js/apps.js"></script>
+<script src="js/phone.js"></script>
+<script src="js/messages.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/photos.js"></script>
 </body>
 </html>
