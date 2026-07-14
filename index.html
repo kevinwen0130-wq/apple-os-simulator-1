@@ -183,6 +183,12 @@ if (name === "messages" && window.messageData) {
 $('apptitle').textContent = a[0];
 $('content').innerHTML = appContent;
 $('appwin').classList.add('open');
+if (name === "camera" && window.cameraData) {
+  appContent = `
+    <div class="art" id="cam">${window.cameraData.icon}</div>
+    <button class="pill" id="shot">${window.cameraData.buttonText}</button>
+  `;
+}
   setTimeout(()=>{
     if($('sendMsg'))bind($('sendMsg'),()=>{const v=$('msgInput').value.trim();if(!v)return;$('thread').innerHTML+='<div class="msg">'+v+'</div>';$('msgInput').value='';showNotice('訊息已同步到 Apple Watch。')});
     if($('shot'))bind($('shot'),()=>showNotice('照片已儲存到「照片」。'));
