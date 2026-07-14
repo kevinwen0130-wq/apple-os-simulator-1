@@ -189,6 +189,13 @@ if (name === "camera" && window.cameraData) {
     <button class="pill" id="shot">${window.cameraData.buttonText}</button>
   `;
 }
+if (name === "photos" && window.photosData) {
+  appContent = `
+    <div class="row">
+      ${window.photosData.images.join("　")}
+    </div>
+  `;
+}
   setTimeout(()=>{
     if($('sendMsg'))bind($('sendMsg'),()=>{const v=$('msgInput').value.trim();if(!v)return;$('thread').innerHTML+='<div class="msg">'+v+'</div>';$('msgInput').value='';showNotice('訊息已同步到 Apple Watch。')});
     if($('shot'))bind($('shot'),()=>showNotice('照片已儲存到「照片」。'));
