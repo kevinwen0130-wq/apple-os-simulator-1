@@ -157,8 +157,32 @@ wallet:['錢包','<div class="art">💳</div><div class="row">模擬卡片，不
 store:['App Store','<div class="row">今日精選：Apple OS Simulator</div><div class="row">遊戲　App　Arcade</div>']
 };
 function openApp(name){
-  if(locked)return;
-  const a=apps[name];$('apptitle').textContent=a[0];$('content').innerHTML=a[1];$('appwin').classList.add('open');
+  if (locked) return;
+
+const a = apps[name];
+let appContent = a[1];
+
+if (name === "messages" && window.messageData) {
+  const conversation = window.messageData[0];
+
+  appContent = `
+    <div id="thread">
+      ${conversation.messages
+        .map((message, index) =>
+          `<div class="msg ${index === 0 ? "in" : ""}">${message}</div>`
+        )
+        .join("")}
+    </div>
+    <div class="sendbox">
+      <input id="msgInput" placeholder="輸入訊息">
+      <button class="pill" id="sendMsg">傳送</button>
+    </div>
+  `;
+}
+
+$('apptitle').textContent = a[0];
+$('content').innerHTML = appContent;
+$('appwin').classList.add('open');
   setTimeout(()=>{
     if($('sendMsg'))bind($('sendMsg'),()=>{const v=$('msgInput').value.trim();if(!v)return;$('thread').innerHTML+='<div class="msg">'+v+'</div>';$('msgInput').value='';showNotice('訊息已同步到 Apple Watch。')});
     if($('shot'))bind($('shot'),()=>showNotice('照片已儲存到「照片」。'));
