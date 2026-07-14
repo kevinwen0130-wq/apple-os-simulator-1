@@ -196,9 +196,12 @@ if (name === "photos" && window.photosData) {
     </div>
   `;
 }
+$('apptitle').textContent = a[0];
+$('content').innerHTML = appContent;
+$('appwin').classList.add('open');
   setTimeout(()=>{
     if($('sendMsg'))bind($('sendMsg'),()=>{const v=$('msgInput').value.trim();if(!v)return;$('thread').innerHTML+='<div class="msg">'+v+'</div>';$('msgInput').value='';showNotice('訊息已同步到 Apple Watch。')});
-    if($('shot'))bind($('shot'),()=>showNotice('照片已儲存到「照片」。'));
+    if($('shot')) bind($('shot'), () => window.takePhoto());
     if($('playMusic'))bind($('playMusic'),()=>{$('islandTitle').textContent='正在播放';$('islandText').textContent='Demo Track・Apple Music';$('island').classList.add('expanded');setTimeout(()=>$('island').classList.remove('expanded'),1700)});
     if($('startNav'))bind($('startNav'),()=>showNotice('地圖導航已開始。'));
     if($('wifiRow'))bind($('wifiRow'),()=>showNotice('Wi‑Fi 狀態已切換。'));
