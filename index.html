@@ -180,9 +180,7 @@ if (name === "messages" && window.messageData) {
   `;
 }
 
-$('apptitle').textContent = a[0];
-$('content').innerHTML = appContent;
-$('appwin').classList.add('open');
+
 if (name === "camera" && window.cameraData) {
   appContent = `
     <div class="art" id="cam">${window.cameraData.icon}</div>
@@ -196,7 +194,22 @@ if (name === "photos" && window.photosData) {
     </div>
   `;
 }
-$('apptitle').textContent = a[0];
+
+if (name === "safari" && window.safariData) {
+  appContent = `
+    <div class="row">
+      <b>${window.safariData.pageTitle}</b>
+    </div>
+
+    <div class="row">
+      🌐 ${window.safariData.url}
+    </div>
+
+    <div class="row">
+      ${window.safariData.content}
+    </div>
+  `;
+}$('apptitle').textContent = a[0];
 $('content').innerHTML = appContent;
 $('appwin').classList.add('open');
   setTimeout(()=>{
@@ -242,5 +255,6 @@ bind($('wback'),()=>{watchInApp=false;$('wdetail').classList.remove('open');show
 <script src="js/messages.js"></script>
 <script src="js/camera.js"></script>
 <script src="js/photos.js"></script>
+<script src="js/safari.js"></script>
 </body>
 </html>
