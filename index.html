@@ -197,19 +197,19 @@ if (name === "photos" && window.photosData) {
 
 if (name === "safari" && window.safariData) {
   appContent = `
-    <div class="row">
-      <b>${window.safariData.pageTitle}</b>
+    <div class="sendbox">
+      <input id="safariInput" placeholder="輸入 apple、github 或 wikipedia">
+      <button class="pill" id="safariGo">前往</button>
     </div>
 
-    <div class="row">
-      🌐 ${window.safariData.url}
-    </div>
-
-    <div class="row">
-      ${window.safariData.content}
+    <div id="safariPage">
+      <div class="row"><b>${window.safariData.pageTitle}</b></div>
+      <div class="row">🌐 ${window.safariData.url}</div>
+      <div class="row">${window.safariData.content}</div>
     </div>
   `;
-}$('apptitle').textContent = a[0];
+}
+$('apptitle').textContent = a[0];
 $('content').innerHTML = appContent;
 $('appwin').classList.add('open');
   setTimeout(()=>{
@@ -218,6 +218,19 @@ $('appwin').classList.add('open');
     if($('playMusic'))bind($('playMusic'),()=>{$('islandTitle').textContent='正在播放';$('islandText').textContent='Demo Track・Apple Music';$('island').classList.add('expanded');setTimeout(()=>$('island').classList.remove('expanded'),1700)});
     if($('startNav'))bind($('startNav'),()=>showNotice('地圖導航已開始。'));
     if($('wifiRow'))bind($('wifiRow'),()=>showNotice('Wi‑Fi 狀態已切換。'));
+    if ($('safariGo')) {
+  bind($('safariGo'), () => {
+    let url = $('safariInput').value.trim();
+
+    if (!url) return;
+
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'https://' + url;
+    }
+
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+}
   },20)
 }
 document.querySelectorAll('[data-app]').forEach(x=>bind(x,()=>openApp(x.dataset.app)));
