@@ -1,0 +1,22 @@
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","PingFang TC","Noto Sans TC","Helvetica Neue",Arial,sans-serif;font-synthesis:none;text-rendering:optimizeLegibility}
+button,input,textarea{font-family:inherit}.screen{isolation:isolate}
+.screen>.status{position:relative;z-index:42;width:100%;height:38px;margin:0;padding:8px 15px 0;align-items:flex-start;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang TC",sans-serif;font-size:11px;letter-spacing:-.15px;pointer-events:none;background:transparent!important;background-color:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;outline:0!important}
+.status>#clock{min-width:40px;text-align:center;font-weight:650}
+.screen>.status .system-status{min-width:72px;height:20px;margin:0;padding:0;display:flex;align-items:center;justify-content:flex-end;gap:4px;pointer-events:auto;touch-action:manipulation;background:transparent!important;background-color:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.cellular{height:11px;display:flex;align-items:flex-end;gap:1.5px}.cellular i{display:block;width:3px;border-radius:1px;background:currentColor}.cellular i:nth-child(1){height:4px}.cellular i:nth-child(2){height:6px}.cellular i:nth-child(3){height:8px}.cellular i:nth-child(4){height:10px}
+.network-label{font-size:9px;font-weight:700}.wifi-symbol{position:relative;width:13px;height:10px;overflow:hidden}.wifi-symbol:before,.wifi-symbol:after{content:"";position:absolute;left:50%;border:1.7px solid currentColor;border-left-color:transparent;border-right-color:transparent;border-bottom-color:transparent;border-radius:50%;transform:translateX(-50%)}.wifi-symbol:before{width:13px;height:13px;top:2px}.wifi-symbol:after{width:7px;height:7px;top:6px}
+.battery{position:relative;width:20px;height:10px;padding:1px;border:1.25px solid currentColor;border-radius:3px;opacity:.96}.battery:after{content:"";position:absolute;right:-3px;top:2px;width:2px;height:4px;border-radius:0 2px 2px 0;background:currentColor;opacity:.65}.battery>i{display:block;width:78%;height:100%;border-radius:1px;background:currentColor}
+.app-window{padding:42px 15px 17px;background:#f2f2f7;overscroll-behavior:contain;scrollbar-width:none}.app-window::-webkit-scrollbar{display:none}
+.ios-nav{position:sticky;z-index:12;top:-42px;min-height:45px;margin:-8px -15px 10px;padding:7px 10px 5px;display:grid!important;grid-template-columns:74px 1fr 74px;align-items:center;background:#f2f2f7e8;border-bottom:1px solid #00000010;backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px)}
+.ios-nav h2{font-size:17px!important;font-weight:650;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ios-nav button{min-height:34px!important;padding:4px 6px!important;background:transparent!important;color:#007aff!important;border-radius:9px!important;font-size:14px}
+.ios-back{justify-self:start;display:flex;align-items:center;visibility:hidden;opacity:0}.ios-back.visible{visibility:visible;opacity:1}.ios-back{font-size:24px!important;font-weight:300}.ios-back span{font-size:14px}.ios-done{justify-self:end;font-weight:600}
+.app-window.open{animation:ios-app-open .36s cubic-bezier(.2,.85,.2,1)}
+#appContent.nav-forward{animation:ios-nav-forward .28s cubic-bezier(.2,.8,.2,1)}
+#appContent.nav-back{animation:ios-nav-back .28s cubic-bezier(.2,.8,.2,1)}
+.homebar{touch-action:manipulation}.launcher small{text-shadow:0 1px 3px #0009;font-weight:500;letter-spacing:-.1px}.launcher .app-icon{border-radius:13px}
+@keyframes ios-app-open{from{transform:scale(.92);opacity:.35}to{transform:none;opacity:1}}
+@keyframes ios-nav-forward{from{transform:translateX(28px);opacity:.2}to{transform:none;opacity:1}}
+@keyframes ios-nav-back{from{transform:translateX(-28px);opacity:.2}to{transform:none;opacity:1}}
+@media(max-width:480px){body{overflow-x:hidden}.topbar{padding:12px 14px}.topbar h1{font-size:20px}.topbar p{font-size:12px}.stage{padding:0 4px 20px}.panel{border-radius:24px}}
+@media(prefers-color-scheme:dark){.app-window,.ios-nav{background:#000;color:#fff}.ios-nav{border-bottom-color:#ffffff18}}
+@media(prefers-reduced-motion:reduce){.app-window.open,#appContent.nav-forward,#appContent.nav-back{animation:none}}
