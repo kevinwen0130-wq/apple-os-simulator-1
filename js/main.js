@@ -6,6 +6,7 @@ import { settingsApp } from "./apps/settings.js";
 import { musicApp } from "./apps/music.js";
 import { initIsland } from "./island.js";
 import { initNetworkStatus } from "./network.js";
+import { initSystemUI, openAppSwitcher, openSpotlight, renderNotifications } from "./system/system-ui.js";
 
 function initPhone() {
   setLocked(state.locked);
@@ -21,7 +22,9 @@ function initPhone() {
   bind($("backApp"), backApp);
   bind($("homebar"), () => state.locked ? setLocked(false) : closeApp());
   bind($("notice"), () => $("notice").classList.remove("show"));
-  bind($("notificationCenter"), () => $("notificationCenter").classList.remove("open"));
+  $("notificationCenter").addEventListener("click", (event) => {
+    if (event.target === $("notificationCenter")) $("notificationCenter").classList.remove("open");
+  });
   $("controlCenter").addEventListener("click", (event) => {
     if (event.target === $("controlCenter")) $("controlCenter").classList.remove("open");
   });
@@ -95,7 +98,12 @@ function initPhone() {
     if (state.locked && dy < -55) setLocked(false);
     if (!state.locked && startY < bounds.top + 90 && dy > 55) {
       const panel = startX > bounds.left + bounds.width / 2 ? $("controlCenter") : $("notificationCenter");
+      if (panel === $("notificationCenter")) renderNotifications();
       panel.classList.add("open");
+    } else if (!state.locked && startY > bounds.top + 110 && startY < bounds.bottom - 120 && dy > 55 && Math.abs(dx) < 80) {
+      openSpotlight();
+    } else if (!state.locked && startY > bounds.bottom - 95 && dy < -55 && Math.abs(dx) < 90) {
+      openAppSwitcher();
     }
   }, { passive: true });
   $("screen").addEventListener("pointerdown", (event) => {
@@ -115,7 +123,12 @@ function initPhone() {
     }
     if (!state.locked && startY < bounds.top + 95 && dy > 45) {
       const panel = startX > bounds.left + bounds.width / 2 ? $("controlCenter") : $("notificationCenter");
+      if (panel === $("notificationCenter")) renderNotifications();
       panel.classList.add("open");
+    } else if (!state.locked && startY > bounds.top + 110 && startY < bounds.bottom - 120 && dy > 50 && Math.abs(dx) < 80) {
+      openSpotlight();
+    } else if (!state.locked && startY > bounds.bottom - 95 && dy < -50 && Math.abs(dx) < 90) {
+      openAppSwitcher();
     }
   });
 }
@@ -126,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
   settingsApp.init();
   musicApp.init();
   initIsland((name) => appRegistry[name]?.open(), () => musicApp.toggle());
+  initSystemUI();
   initPhone();
   initWatch();
   console.info("Apple OS Simulator V4 已啟動");

@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/ios-apps-batch2.css">
   <link rel="stylesheet" href="css/ios-apps-batch3.css">
   <link rel="stylesheet" href="css/network-apps.css">
+  <link rel="stylesheet" href="css/system-ui.css">
 </head>
 <body>
   <div class="network-banner" id="networkBanner"></div>
@@ -63,6 +64,10 @@
             <button class="launcher" data-app="news"><span class="app-icon">N</span><small>新聞</small></button>
             <button class="launcher" data-app="translate"><span class="app-icon">文A</span><small>翻譯</small></button>
           </div>
+          <nav class="system-entry" aria-label="系統功能">
+            <button id="spotlightTrigger">⌕ 搜尋</button>
+            <button id="switcherTrigger">▣ 切換 App</button>
+          </nav>
           <div class="dock">
             <button class="launcher" data-app="safari"><span class="app-icon">⌁</span></button>
             <button class="launcher" data-app="mail"><span class="app-icon">✉</span></button>
@@ -70,7 +75,7 @@
             <button class="launcher" data-app="store"><span class="app-icon">A</span></button>
           </div>
           <button class="lock layer" id="lock"><small>7 月 16 日 星期四</small><strong id="lockclock">12:06</strong><span>向上滑動或點一下解鎖</span></button>
-          <div class="notification-center layer" id="notificationCenter"><h2>通知中心</h2><div class="row">訊息：Apple Watch 已連線</div><div class="row">GitHub Pages：網站已部署</div></div>
+          <div class="notification-center layer" id="notificationCenter"><div class="notification-header"><h2>通知中心</h2><button id="clearNotifications">全部清除</button></div><div class="notification-list" id="notificationList"></div></div>
           <div class="control-center layer" id="controlCenter">
             <div class="cc-header"><h2>控制中心</h2><button id="closeControlCenter">完成</button></div>
             <div class="cc-grid">
@@ -80,6 +85,15 @@
               <label class="cc-slider">🔊<input id="ccVolume" type="range" min="0" max="100" value="55"></label>
             </div>
           </div>
+          <section class="system-layer layer spotlight" id="spotlight" aria-label="Spotlight 搜尋">
+            <header class="system-layer-header"><h2>Spotlight</h2><button id="closeSpotlight">完成</button></header>
+            <label class="spotlight-search"><span>⌕</span><input id="spotlightInput" type="search" autocomplete="off" placeholder="搜尋 App"></label>
+            <div class="spotlight-results" id="spotlightResults"></div>
+          </section>
+          <section class="system-layer layer app-switcher" id="appSwitcher" aria-label="App 切換器">
+            <header class="system-layer-header"><h2>最近使用</h2><button id="closeSwitcher">完成</button></header>
+            <div class="switcher-cards" id="switcherCards"></div>
+          </section>
           <section class="app-window layer" id="appWindow"><header class="ios-nav"><button id="backApp" class="ios-back" aria-label="返回">‹ <span>返回</span></button><h2 id="appTitle">App</h2><button id="closeApp" class="ios-done">完成</button></header><div id="appContent"></div></section>
           <div class="volume-hud" id="volumeHud"><div id="volumeLevel"></div></div>
           <button class="homebar" id="homebar" aria-label="回到主畫面"></button>

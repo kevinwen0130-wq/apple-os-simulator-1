@@ -17,6 +17,9 @@ const defaults = {
   health: { steps: 6428, heartRate: 78, sleep: 7.3, water: 4 },
   walletCards: [],
   installedApps: [],
+  notifications: [],
+  recentApps: [],
+  activeApp: null,
   weatherCache: null,
   location: null,
   appearance: "light",
@@ -40,7 +43,9 @@ function loadState() {
       ...stored,
       photos: Array.isArray(stored.photos)
         ? stored.photos.filter((photo) => photo && typeof photo === "object" && photo.src)
-        : []
+        : [],
+      notifications: Array.isArray(stored.notifications) ? stored.notifications : [],
+      recentApps: Array.isArray(stored.recentApps) ? stored.recentApps : []
     };
   } catch {
     return { ...defaults };

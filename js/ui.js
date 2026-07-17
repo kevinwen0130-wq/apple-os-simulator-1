@@ -1,5 +1,6 @@
 import { state, saveState } from "./state.js";
 import { showIslandNotification } from "./island.js";
+import { addNotification } from "./system/notifications.js";
 
 export const $ = (id) => document.getElementById(id);
 export const bind = (element, handler) => element?.addEventListener("click", handler);
@@ -19,6 +20,7 @@ function renderApp(title, content, direction = "forward") {
   $("appContent").classList.remove("nav-forward", "nav-back");
   requestAnimationFrame(() => $("appContent")?.classList.add(direction === "back" ? "nav-back" : "nav-forward"));
   updateBackButton();
+  window.dispatchEvent(new CustomEvent("simulator:app-opened", { detail: { title } }));
 }
 
 export function setLocked(locked) {
@@ -60,9 +62,14 @@ export function closeApp() {
   appHistory.length = 0;
   $("appWindow").classList.remove("open");
   $("backApp")?.classList.remove("visible");
+  state.activeApp = null;
+  saveState();
 }
 
-export function showNotice(message) {
+export function showNotice(message, options = {}) {
+  const sourceApp = options.app || state.activeApp?.key || null;
+  const source = options.source || state.activeApp?.title || "系統";
+  addNotification({ message, source, app: sourceApp });
   $("notice").innerHTML = `<b>訊息</b><br>${message}`;
   $("watchNotice").innerHTML = `<b>來自 iPhone</b><br>${message}`;
   $("notice").classList.add("show");
