@@ -20,6 +20,7 @@ const defaults = {
   notifications: [],
   recentApps: [],
   activeApp: null,
+  flashlight: false,
   weatherCache: null,
   location: null,
   appearance: "light",

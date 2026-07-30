@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/ios-apps-batch3.css">
   <link rel="stylesheet" href="css/network-apps.css">
   <link rel="stylesheet" href="css/system-ui.css">
+  <link rel="stylesheet" href="css/lock-screen.css">
 </head>
 <body>
   <div class="network-banner" id="networkBanner"></div>
@@ -74,7 +75,12 @@
             <button class="launcher" data-app="wallet"><span class="app-icon">▤</span></button>
             <button class="launcher" data-app="store"><span class="app-icon">A</span></button>
           </div>
-          <button class="lock layer" id="lock"><small>7 月 16 日 星期四</small><strong id="lockclock">12:06</strong><span>向上滑動或點一下解鎖</span></button>
+          <section class="lock layer" id="lock" aria-label="鎖定畫面">
+            <div class="lock-head"><small id="lockDate">7 月 16 日 星期四</small><strong id="lockclock">12:06</strong><span class="lock-status" id="lockStatus" hidden>正在充電</span></div>
+            <div class="lock-notifications" id="lockNotifications"></div>
+            <div class="lock-actions"><button id="lockFlashlight" aria-label="手電筒">⌁</button><button id="lockCamera" aria-label="相機">◉</button></div>
+            <button class="unlock-hint" id="unlockTrigger">向上滑動或點一下解鎖</button>
+          </section>
           <div class="notification-center layer" id="notificationCenter"><div class="notification-header"><h2>通知中心</h2><button id="clearNotifications">全部清除</button></div><div class="notification-list" id="notificationList"></div></div>
           <div class="control-center layer" id="controlCenter">
             <div class="cc-header"><h2>控制中心</h2><button id="closeControlCenter">完成</button></div>

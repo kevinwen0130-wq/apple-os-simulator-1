@@ -27,6 +27,7 @@ export function setLocked(locked) {
   state.locked = locked;
   $("lock").classList.toggle("hidden", !locked);
   saveState();
+  window.dispatchEvent(new CustomEvent("simulator:lock-state", { detail: { locked } }));
 }
 
 export function openApp(title, content) {

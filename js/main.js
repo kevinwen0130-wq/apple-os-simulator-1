@@ -7,13 +7,14 @@ import { musicApp } from "./apps/music.js";
 import { initIsland } from "./island.js";
 import { initNetworkStatus } from "./network.js";
 import { initSystemUI, openAppSwitcher, openSpotlight, renderNotifications } from "./system/system-ui.js";
+import { initLockScreen } from "./system/lock-screen.js";
 
 function initPhone() {
   setLocked(state.locked);
   updateClock();
   window.setInterval(updateClock, 30000);
 
-  bind($("lock"), () => setLocked(false));
+  bind($("unlockTrigger"), () => setLocked(false));
   bind($("syncBtn"), () => showNotice("iPhone 與 Apple Watch 已同步"));
   bind($("resetBtn"), resetState);
   bind($("actionBtn"), () => showNotice("動作按鈕：已執行快捷操作"));
@@ -140,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
   musicApp.init();
   initIsland((name) => appRegistry[name]?.open(), () => musicApp.toggle());
   initSystemUI();
+  initLockScreen();
   initPhone();
   initWatch();
   console.info("Apple OS Simulator V4 已啟動");
