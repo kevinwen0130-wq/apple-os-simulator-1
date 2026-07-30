@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="css/network-apps.css">
   <link rel="stylesheet" href="css/system-ui.css">
   <link rel="stylesheet" href="css/lock-screen.css">
+  <link rel="stylesheet" href="css/assistant.css">
 </head>
 <body>
   <div class="network-banner" id="networkBanner"></div>
@@ -68,6 +69,7 @@
           <nav class="system-entry" aria-label="系統功能">
             <button id="spotlightTrigger">⌕ 搜尋</button>
             <button id="switcherTrigger">▣ 切換 App</button>
+            <button id="assistantTrigger">✦ Siri</button>
           </nav>
           <div class="dock">
             <button class="launcher" data-app="safari"><span class="app-icon">⌁</span></button>
@@ -99,6 +101,12 @@
           <section class="system-layer layer app-switcher" id="appSwitcher" aria-label="App 切換器">
             <header class="system-layer-header"><h2>最近使用</h2><button id="closeSwitcher">完成</button></header>
             <div class="switcher-cards" id="switcherCards"></div>
+          </section>
+          <section class="assistant-layer layer" id="assistant" aria-label="Siri 系統助理">
+            <header><span class="assistant-orb" aria-hidden="true"></span><button id="closeAssistant" aria-label="關閉 Siri">×</button></header>
+            <div class="assistant-conversation" id="assistantConversation"><p class="assistant-reply">嗨，我可以幫你開啟 App 或調整系統設定。</p></div>
+            <div class="assistant-suggestions"><button data-assistant-command="開啟相機">開啟相機</button><button data-assistant-command="現在幾點">現在幾點</button><button data-assistant-command="開啟深色模式">深色模式</button></div>
+            <form class="assistant-composer" id="assistantForm"><input id="assistantInput" autocomplete="off" placeholder="輸入 Siri 指令"><button type="button" id="assistantMic" aria-label="語音輸入">●</button><button type="submit">送出</button></form>
           </section>
           <section class="app-window layer" id="appWindow"><header class="ios-nav"><button id="backApp" class="ios-back" aria-label="返回">‹ <span>返回</span></button><h2 id="appTitle">App</h2><button id="closeApp" class="ios-done">完成</button></header><div id="appContent"></div></section>
           <div class="volume-hud" id="volumeHud"><div id="volumeLevel"></div></div>

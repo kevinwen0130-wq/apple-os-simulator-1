@@ -21,6 +21,7 @@ const defaults = {
   recentApps: [],
   activeApp: null,
   flashlight: false,
+  assistantHistory: [],
   weatherCache: null,
   location: null,
   appearance: "light",
@@ -46,7 +47,8 @@ function loadState() {
         ? stored.photos.filter((photo) => photo && typeof photo === "object" && photo.src)
         : [],
       notifications: Array.isArray(stored.notifications) ? stored.notifications : [],
-      recentApps: Array.isArray(stored.recentApps) ? stored.recentApps : []
+      recentApps: Array.isArray(stored.recentApps) ? stored.recentApps : [],
+      assistantHistory: Array.isArray(stored.assistantHistory) ? stored.assistantHistory : []
     };
   } catch {
     return { ...defaults };
